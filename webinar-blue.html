@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webinar: Fármacos y complementos nutricionales | Integra Medic Institute</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/serviciosbarcelona/daniel.github.io/gh-pages/gradiente.jpg">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            integra: {
+              dark: '#011627',
+              navy: '#011E30',
+              teal: '#0D5C75',
+              cyan: '#00C9A7',
+              accent: '#00E5FF',
+              glass: 'rgba(13, 92, 117, 0.25)',
+              glassBorder: 'rgba(255, 255, 255, 0.15)',
+            }
+          },
+          backgroundImage: {
+            'integra-grad': 'radial-gradient(circle at 20% 20%, #0D5C75 0%, #011E30 50%, #011627 100%)',
+            'glow-cyan': 'radial-gradient(circle at 50% 50%, rgba(0, 201, 167, 0.25) 0%, transparent 70%)',
+            'btn-grad': 'linear-gradient(135deg, #00C9A7 0%, #009688 100%)',
+            'btn-grad-hover': 'linear-gradient(135deg, #00E5FF 0%, #00C9A7 100%)',
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 15px rgba(0,201,167,0.4)' },
+              '100%': { boxShadow: '0 0 30px rgba(0,229,255,0.8)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom CSS Glassmorphism */
+    .glass-card {
+      background: rgba(1, 30, 48, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    .glass-pill {
+      background: rgba(13, 92, 117, 0.35);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Video player custom overlay */
+    .video-container {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    /* Background decorative grid pattern */
+    .bg-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+<body class="bg-integra-dark text-white font-sans min-h-screen relative overflow-x-hidden selection:bg-integra-cyan selection:text-integra-dark">
+
+  <!-- Background decorative light blobs -->
+  <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-integra-teal/30 rounded-full blur-[140px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-0 right-10 w-[500px] h-[500px] bg-integra-cyan/15 rounded-full blur-[120px] pointer-events-none z-0"></div>
+  <div class="fixed top-1/2 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+  
+  <!-- Subtle Grid overlay -->
+  <div class="fixed inset-0 bg-grid pointer-events-none opacity-40 z-0"></div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-between py-6 lg:py-10">
+
+    <!-- HEADER / LOGO -->
+    <header class="w-full flex items-center justify-between mb-8 lg:mb-4">
+      <div class="flex items-center space-x-3">
+        <!-- Logo Image with fallback -->
+        <img 
+          src="https://www.integramedicinstitute.com/wp-content/uploads/2025/10/logo.png" 
+          alt="Integra Medic Institute" 
+          class="h-10 sm:h-12 w-auto object-contain"
+          onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'flex items-center gap-2 text-white font-display font-bold text-xl\'><div class=\'w-8 h-8 rounded-full bg-integra-cyan flex items-center justify-center text-integra-dark\'><i class=\'fa-solid fa-staff-snake\'></i></div><span>INTEGRA <span class=\'text-integra-cyan\'>MEDIC</span></span></div>';"
+        />
+      </div>
+
+      <!-- Live Webinar Tag -->
+      <div class="glass-pill px-4 py-1.5 rounded-full flex items-center space-x-2 text-xs sm:text-sm font-medium border border-integra-cyan/30">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+        <span class="text-gray-200">Clase Online en Directo</span>
+      </div>
+    </header>
+
+    <!-- HERO CONTENT -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto">
+
+      <!-- LEFT COLUMN: TITLES, DESCRIPTION & DOCENTES CARD -->
+      <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+
+        <!-- Top Badge -->
+        <div class="inline-flex items-center space-x-2 glass-pill px-4 py-2 rounded-full w-fit">
+          <i class="fa-solid fa-calendar-check text-integra-cyan text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-wide text-integra-cyan uppercase">Lunes 02 de Noviembre</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-5xl font-extrabold text-white leading-[1.15] tracking-tight">
+          Fármacos y complementos nutricionales:
+          <span class="block mt-2 bg-gradient-to-r from-integra-cyan via-integra-accent to-white bg-clip-text text-transparent">
+            claves para una práctica clínica segura
+          </span>
+        </h1>
+
+        <!-- Short Description -->
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl font-normal leading-relaxed">
+          Aprende a evaluar las <strong class="text-white font-semibold">interacciones fármaco-nutriente</strong> y optimizar tratamientos en consulta de forma segura con rigor y evidencia científica.
+        </p>
+
+        <!-- Aforo Indicator Widget -->
+        <div class="glass-pill p-3 sm:p-4 rounded-2xl max-w-md flex items-center space-x-4 border border-integra-cyan/20">
+          <div class="relative flex items-center justify-center flex-shrink-0">
+            <!-- Circular Progress SVG -->
+            <svg class="w-14 h-14 transform -rotate-90">
+              <circle cx="28" cy="28" r="22" stroke="currentColor" stroke-width="4" class="text-gray-700" fill="transparent" />
+              <circle cx="28" cy="28" r="22" stroke="currentColor" stroke-width="4" class="text-integra-cyan" stroke-dasharray="138" stroke-dashoffset="5.5" stroke-linecap="round" fill="transparent" />
+            </svg>
+            <span class="absolute font-bold text-xs text-white">96%</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-white text-sm sm:text-base">96% de aforo completado</span>
+            </div>
+            <p class="text-xs text-integra-cyan font-medium flex items-center gap-1 mt-0.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-integra-cyan animate-ping"></span>
+              Quedan muy pocas plazas disponibles
+            </p>
+          </div>
+        </div>
+
+        <!-- DOCENTES CARD -->
+        <div class="pt-2">
+          <div class="glass-card p-4 rounded-2xl max-w-lg flex items-center space-x-4 border border-white/10 hover:border-integra-cyan/40 transition-all duration-300">
+            <div class="flex -space-x-4 overflow-hidden flex-shrink-0">
+              <!-- Avatar Dra. Anna Armengol -->
+              <img class="inline-block h-14 w-14 rounded-full ring-2 ring-integra-cyan object-cover bg-integra-navy shadow-md z-10" 
+                   src="https://www.integramedicinstitute.com/wp-content/uploads/2025/10/draanna.png" 
+                   alt="Dra. Anna Armengol" 
+                   onerror="this.onerror=null; this.src='https://placehold.co/100x100/011E30/00C9A7?text=AA';" />
+              <!-- Avatar Anna Folch -->
+              <img class="inline-block h-14 w-14 rounded-full ring-2 ring-integra-cyan object-cover bg-integra-navy shadow-md z-0" 
+                   src="https://www.integramedicinstitute.com/wp-content/uploads/2025/10/folch.jpg" 
+                   alt="Anna Folch" 
+                   onerror="this.onerror=null; this.src='https://placehold.co/100x100/0D5C75/FFFFFF?text=AF';" />
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-graduation-cap text-integra-cyan text-xs"></i>
+                <span class="text-xs uppercase tracking-wider text-gray-300 font-semibold">IMPARTIDO POR LAS DOCENTES:</span>
+              </div>
+              <p class="text-sm sm:text-base font-bold text-white mt-0.5">
+                Dra. Anna Armengol <span class="text-integra-cyan">&amp;</span> Anna Folch
+              </p>
+              <p class="text-xs text-gray-300">Especialistas en Medicina Integrativa e Interacciones</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: FORM + VIDEO REEL CARD -->
+      <div class="lg:col-span-5 w-full">
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-white/15 relative overflow-hidden shadow-2xl">
+          
+          <!-- Decorative glow inside form -->
+          <div class="absolute -top-24 -right-24 w-48 h-48 bg-integra-cyan/20 rounded-full blur-2xl pointer-events-none"></div>
+
+          <!-- Class Banner Header -->
+          <div class="text-center mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-integra-cyan bg-integra-cyan/15 px-3 py-1 rounded-full border border-integra-cyan/40 inline-block mb-2 shadow-[0_0_10px_rgba(0,194,199,0.2)]">
+              • CLASE GRATIS ONLINE •
+            </span>
+            <h2 class="text-xl sm:text-2xl font-bold text-white font-display">
+              LUNES 02 DE NOVIEMBRE
+            </h2>
+            <p class="text-xs text-teal-100/80 mt-1">Reserva tu plaza antes de que se agoten</p>
+          </div>
+
+          <!-- VIDEO REEL PLAYER (VERTICAL 9:16) -->
+          <div class="video-container mb-5 bg-black/60 border border-integra-cyan/30 group max-w-[260px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
+            <video 
+              id="webinarVideo"
+              class="w-full h-full object-cover rounded-2xl" 
+              controls 
+              preload="none"
+              poster="https://raw.githubusercontent.com/serviciosbarcelona/integra.github.io/main/webinar1.jpeg">
+              <source src="https://raw.githubusercontent.com/serviciosbarcelona/daniel.github.io/gh-pages/dra..mp4" type="video/mp4">
+              Tu navegador no soporta reproducción de vídeo.
+            </video>
+          </div>
+
+          <!-- FORM -->
+          <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-3">
+            <div>
+              <label for="fullName" class="block text-xs font-medium text-teal-100/90 mb-1">Nombre completo *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-integra-cyan/80">
+                  <i class="fa-regular fa-user text-sm"></i>
+                </div>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  required 
+                  placeholder="Ej. Dra. María García" 
+                  class="w-full pl-10 pr-4 py-2 bg-integra-dark/70 border border-integra-cyan/30 rounded-xl text-sm text-white placeholder-teal-200/40 focus:outline-none focus:border-integra-cyan focus:ring-1 focus:ring-integra-cyan transition-all"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-xs font-medium text-teal-100/90 mb-1">Correo electrónico profesional *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-integra-cyan/80">
+                  <i class="fa-regular fa-envelope text-sm"></i>
+                </div>
+                <input 
+                  type="email" 
+                  id="email" 
+                  required 
+                  placeholder="tu.email@ejemplo.com" 
+                  class="w-full pl-10 pr-4 py-2 bg-integra-dark/70 border border-integra-cyan/30 rounded-xl text-sm text-white placeholder-teal-200/40 focus:outline-none focus:border-integra-cyan focus:ring-1 focus:ring-integra-cyan transition-all"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="whatsapp" class="block text-xs font-medium text-teal-100/90 mb-1">WhatsApp / Teléfono de contacto *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-emerald-400">
+                  <i class="fa-brands fa-whatsapp text-sm"></i>
+                </div>
+                <input 
+                  type="tel" 
+                  id="whatsapp" 
+                  required 
+                  placeholder="+34 600 000 000" 
+                  class="w-full pl-10 pr-4 py-2 bg-integra-dark/70 border border-integra-cyan/30 rounded-xl text-sm text-white placeholder-teal-200/40 focus:outline-none focus:border-integra-cyan focus:ring-1 focus:ring-integra-cyan transition-all"
+                >
+              </div>
+            </div>
+
+            <!-- PERFIL PROFESIONAL -->
+            <div>
+              <label for="profile" class="block text-xs font-medium text-teal-100/90 mb-1">Perfil profesional *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-integra-cyan/80">
+                  <i class="fa-solid fa-user-doctor text-sm"></i>
+                </div>
+                <select 
+                  id="profile" 
+                  required 
+                  class="w-full pl-10 pr-8 py-2 bg-integra-dark/90 border border-integra-cyan/30 rounded-xl text-sm text-white focus:outline-none focus:border-integra-cyan focus:ring-1 focus:ring-integra-cyan transition-all appearance-none cursor-pointer">
+                  <option value="" disabled selected class="text-teal-200/40 bg-integra-navy">Selecciona tu profesión</option>
+                  <option value="Medicina" class="bg-integra-navy text-white">Medicina</option>
+                  <option value="Enfermería" class="bg-integra-navy text-white">Enfermería</option>
+                  <option value="Farmacia" class="bg-integra-navy text-white">Farmacia</option>
+                  <option value="Nutrición" class="bg-integra-navy text-white">Nutrición</option>
+                  <option value="Odontología" class="bg-integra-navy text-white">Odontología</option>
+                  <option value="Otro" class="bg-integra-navy text-white">Otro</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-integra-cyan">
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="budget" class="block text-xs font-medium text-teal-100/90 mb-1">Presupuesto estimado para invertir en formación *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-integra-cyan/80">
+                  <i class="fa-solid fa-piggy-bank text-sm"></i>
+                </div>
+                <select 
+                  id="budget" 
+                  required 
+                  class="w-full pl-10 pr-8 py-2 bg-integra-dark/90 border border-integra-cyan/30 rounded-xl text-sm text-white focus:outline-none focus:border-integra-cyan focus:ring-1 focus:ring-integra-cyan transition-all appearance-none cursor-pointer">
+                  <option value="" disabled selected class="text-teal-200/40 bg-integra-navy">Selecciona una opción</option>
+                  <option value="Menos de 600 €" class="bg-integra-navy text-white">Menos de 600 €</option>
+                  <option value="Entre 600 € y 1.500 €" class="bg-integra-navy text-white">Entre 600 € y 1.500 €</option>
+                  <option value="Más de 1.500 €" class="bg-integra-navy text-white">Más de 1.500 €</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-integra-cyan">
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- SUBMIT BUTTON WITH GLOW -->
+            <button 
+              type="submit" 
+              class="w-full mt-2 py-3.5 px-6 bg-btn-grad hover:bg-btn-grad-hover text-integra-dark font-display font-extrabold text-base rounded-xl transition-all duration-300 shadow-[0_0_25px_rgba(0,194,199,0.5)] hover:shadow-[0_0_35px_rgba(56,239,125,0.7)] hover:scale-[1.01] flex items-center justify-center space-x-2 group">
+              <span>Registrarme gratis</span>
+              <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </form>
+
+          <!-- PRIVACY POLICY & TRUST -->
+          <div class="mt-3 text-center">
+            <p class="text-[11px] text-gray-400">
+              <i class="fa-solid fa-lock text-integra-cyan text-[10px] mr-1"></i>
+              Al reservar aceptas la <a href="#" onclick="event.preventDefault(); openPrivacyModal();" class="underline hover:text-white">política de privacidad</a>.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="font-semibold text-gray-300">Integra Medic Institute</span>
+        <span>© 2026 Todos los derechos reservados.</span>
+      </div>
+      <div class="flex space-x-4">
+        <span class="hover:text-white transition-colors cursor-pointer"><i class="fa-solid fa-shield-halved text-integra-cyan mr-1"></i> Formación Médica Acreditada</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- SUCCESS MODAL & WHATSAPP COMMUNITY LOOP -->
+  <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-8 rounded-3xl text-center border border-integra-cyan/40 shadow-2xl relative animate-float">
+      <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-400/50">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+      </div>
+      <h3 class="text-2xl font-bold font-display text-white mb-2">¡Gracias por registrarte!</h3>
+      <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+        Tu información ha sido enviada con éxito. Para no perderte ningún detalle y acceder al material exclusivo previo al webinar, <strong class="text-white">únete ahora mismo a nuestro Grupo Privado de WhatsApp</strong>.
+      </p>
+
+      <a 
+        href="https://chat.whatsapp.com/FtuNwRM0bb4HoOWCDaWIVh" 
+        target="_blank" 
+        class="w-full py-3.5 px-6 bg-emerald-500 hover:bg-emerald-400 text-integra-dark font-bold rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20 mb-3">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        <span>Unirme al Grupo de WhatsApp</span>
+      </a>
+
+      <button 
+        onclick="closeModal()" 
+        class="text-xs text-gray-400 hover:text-white underline transition-colors">
+        Cerrar y continuar
+      </button>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div id="privacyModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-3xl text-left border border-integra-cyan/40 shadow-2xl relative">
+      <h3 class="text-xl font-bold font-display text-white mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-user-shield text-integra-cyan"></i> Política de Privacidad
+      </h3>
+      <p class="text-sm text-gray-300 leading-relaxed mb-4">
+        Tus datos personales están 100% protegidos y seguros con nosotros. Solo los utilizaremos para gestionar tu acceso e inscripción al webinar de <strong>Integra Medic Institute</strong> y ponernos en contacto contigo respecto a esta formación.
+      </p>
+      <p class="text-xs text-gray-400 leading-relaxed mb-6">
+        No compartiremos ni venderemos tus datos a terceros en ningún caso. Puedes solicitar la eliminación de tu información en cualquier momento.
+      </p>
+      <button 
+        onclick="closePrivacyModal()" 
+        class="w-full py-2.5 px-4 bg-integra-cyan hover:bg-integra-accent text-integra-dark font-bold rounded-xl transition-all text-sm">
+        Entendido y Aceptar
+      </button>
+    </div>
+  </div>
+
+  <!-- JS LOGIC -->
+  <script>
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('whatsapp').value;
+      const profile = document.getElementById('profile').value;
+      const budget = document.getElementById('budget').value;
+
+      if(name && email && phone && profile && budget) {
+        // Formatear mensaje para Lupe (Closer de Ventas)
+        const message = `Hola Lupe, me he registrado al Webinar de Integra Medic Institute:%0A%0A` +
+                        `👤 *Nombre:* ${encodeURIComponent(name)}%0A` +
+                        `✉️ *Email:* ${encodeURIComponent(email)}%0A` +
+                        `📱 *WhatsApp:* ${encodeURIComponent(phone)}%0A` +
+                        `🩺 *Perfil Profesional:* ${encodeURIComponent(profile)}%0A` +
+                        `💰 *Presupuesto de Formación:* ${encodeURIComponent(budget)}`;
+
+        // Enviar vía WhatsApp Web / App a Lupe
+        const whatsappUrl = `https://wa.me/34636583313?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+
+        // Mostrar Modal Flotante de Agradecimiento + Grupo de WhatsApp
+        document.getElementById('successModal').classList.remove('hidden');
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.add('hidden');
+      document.getElementById('leadForm').reset();
+    }
+
+    function openPrivacyModal() {
+      document.getElementById('privacyModal').classList.remove('hidden');
+    }
+
+    function closePrivacyModal() {
+      document.getElementById('privacyModal').classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
